@@ -1,0 +1,11 @@
+{
+  "name": "pulpo-production",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PULPO Production website — static HTML/CSS/JS rebuild of the Wix Studio site",
+  "scripts": {
+    "fetch-images": "node scripts/fetch-images.mjs",
+    "dev": "npx --yes serve . -l 3000"
+  },
+  "engines": { "node": ">=18" }
+}

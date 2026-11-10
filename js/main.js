@@ -1,0 +1,80 @@
+// PULPO Production — small progressive enhancements. The page works without this file.
+document.documentElement.classList.remove("no-js");
+
+// ---- Mobile menu ----
+const toggle = document.querySelector(".menu-toggle");
+const nav = document.getElementById("primary-nav");
+
+function setMenu(open) {
+  toggle.setAttribute("aria-expanded", String(open));
+  toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  nav.classList.toggle("is-open", open);
+}
+toggle?.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
+nav?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+
+// ---- Sticky stack: keep tall sections readable ----
+// Each section in .stack sticks at (--stack × --stack-step). If a section is
+// taller than the space below that point, it would freeze before its bottom
+// is visible, so we raise its sticky point (negative top) just enough.
+const stackSections = document.querySelectorAll(".stack > section");
+function fitStack() {
+  const step = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--stack-step")) || 0;
+  stackSections.forEach((sec) => {
+    const i = parseFloat(sec.style.getPropertyValue("--stack")) || 0;
+    const wanted = i * step;
+    const room = window.innerHeight - sec.offsetHeight;
+    sec.style.top = room < wanted ? `${room}px` : "";
+  });
+}
+fitStack();
+window.addEventListener("resize", fitStack);
+window.addEventListener("load", fitStack); // fonts/images can change heights
+
+// ---- Fade-up reveal on scroll ----
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+// ---- Contact form: send without leaving the page ----
+// Without JS the form still works: it posts to Web3Forms and shows their thank-you page.
+document.querySelectorAll("[data-contact-form]").forEach((form) => {
+  const status = form.querySelector(".form-status");
+  const button = form.querySelector('button[type="submit"]');
+  const show = (msg, kind) => { status.textContent = msg; status.className = `form-status is-${kind}`; };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (form.access_key.value.includes("YOUR_ACCESS_KEY")) {
+      show("Form not configured yet: add the Web3Forms access key in index.html.", "error");
+      return;
+    }
+    button.disabled = true;
+    show("Sending…", "pending");
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Request failed");
+      form.reset();
+      show("Thanks! Your message has been sent.", "ok");
+    } catch (err) {
+      show("Sorry, something went wrong. Please email us directly at alcarasproduction@gmail.com.", "error");
+    } finally {
+      button.disabled = false;
+    }
+  });
+});
+
+// ---- Footer year ----
+document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
