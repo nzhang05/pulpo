@@ -112,16 +112,19 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 /* ---------- hero ---------- */
 .hero {
   position: relative; min-height: max(640px, 100svh);
-  display: grid; place-items: center; overflow: hidden;
-  background: var(--dark);
+  overflow: hidden; background: var(--dark);
 }
 .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero-content {
-  position: relative; display: flex; flex-direction: column; align-items: center;
-  padding: var(--header-h) var(--gutter) 60px;
+/* The logo artwork is a square with the tentacles running off its bottom edge.
+   It's anchored to the bottom of the hero so the tentacles meet the next section,
+   and sized to fill the height under the header (capped so the wordmark fits on phones). */
+.hero-art {
+  position: absolute; left: 50%; bottom: -1px; translate: -50% 0;
+  width: min(calc(max(640px, 100svh) - var(--header-h) - 8px), 125vw, 1100px);
+  aspect-ratio: 1;
 }
-.hero-logo { width: min(480px, 80vw); }
-.hero .btn { margin-top: calc(min(480px, 80vw) * -0.23); position: relative; } /* sits inside the logo's lower space, as on the original */
+.hero-logo { width: 100%; height: 100%; }
+.hero .btn { position: absolute; left: 50%; top: 71%; translate: -50% 0; } /* just under "PRODUCTION" */
 
 /* ---------- stacking sections ----------
    The intro and the four services are sticky. Each one slides up over the
@@ -131,7 +134,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
    js/main.js lifts the sticky point of any section taller than the screen
    so its bottom can still be read. */
 :root { --stack-step: 24px; }
-.stack > section {
+.stack > .stack-item {
   position: sticky;
   top: calc(var(--stack, 0) * var(--stack-step));
 }
@@ -147,17 +150,47 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 
 /* ---------- services ---------- */
 .service {
+  --art: min(620px, 48vw);              /* size of the square tentacle artwork */
   overflow: hidden;
   display: grid; align-items: center;
-  min-height: 520px;
+  min-height: max(520px, var(--art));
   font-family: var(--font-display);
 }
-.service.art-left  { grid-template-columns: minmax(260px, 38%) 1fr; }
-.service.art-right { grid-template-columns: 1fr minmax(260px, 36%); }
+.service.art-left  { grid-template-columns: calc(var(--art) * var(--cell, .6)) 1fr; }
+.service.art-right { grid-template-columns: 1fr calc(var(--art) * var(--cell, .6)); }
 
-.service-art { width: 100%; height: 100%; max-height: 620px; object-fit: contain; }
-.art-left  .service-art { object-position: left center; }
-.art-right .service-art { object-position: right center; }
+/* Tentacles: anchored to the section's bottom edge, rise in when the section
+   scrolls into view, then sway gently from their base. Per-section tuning:
+   --shift  slides the artwork sideways inside its column
+   --origin the point it pivots around (where the tentacle meets the bottom)
+   --sway / --amp  speed and angle of the sway */
+.art-cell { position: relative; align-self: stretch; }
+.art {
+  position: absolute; bottom: -2%;      /* tuck under the edge so the base never lifts */
+  width: var(--art); aspect-ratio: 1;
+  translate: var(--shift, 0) 0;
+}
+.art-left  .art { left: 0; }
+.art-right .art { right: 0; }
+.art img {
+  width: 100%; height: 100%;
+  transform-origin: var(--origin, 50% 100%);
+  animation: sway var(--sway, 7s) ease-in-out var(--delay, 0s) infinite;
+  opacity: 0; translate: 0 18%;
+  transition: opacity 1s ease, translate 1.4s cubic-bezier(.2, .7, .2, 1);
+}
+.art.is-visible img { opacity: 1; translate: 0 0; }
+.no-js .art img { opacity: 1; translate: none; }
+
+@keyframes sway {
+  0%, 100% { rotate: calc(var(--amp, 2deg) * -1); scale: 1; }
+  50%      { rotate: var(--amp, 2deg);            scale: 1 1.025; }
+}
+
+.service--blue  { --shift: -20%; --origin: 42% 100%; --sway: 7s; }
+.service--cream { --shift: 22%;  --origin: 10% 100%; --sway: 8.5s; --amp: 1.4deg; --cell: .62; --delay: -2s; }
+.service--navy  { --shift: 0%;   --origin: 6% 100%;  --sway: 9s;   --cell: .58; --delay: -4s; }
+.service--sky   { --shift: 25%;  --origin: 49% 100%; --sway: 7.5s; --delay: -1s; }
 
 .service-text { padding: 60px var(--gutter); max-width: 720px; }
 .service h3 {
@@ -175,7 +208,10 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service--sky   { background: var(--sky);   color: var(--cream); }
 
 /* ---------- gallery ---------- */
-.gallery { background: var(--navy); padding: 100px 0 120px; }
+.gallery {
+  background: var(--navy); padding: 100px 0 120px;
+  position: relative; z-index: 1;      /* slides over the stuck service sections */
+}
 .section-title {
   font-family: var(--font-display); font-weight: 400; text-transform: uppercase; text-align: center;
   font-size: clamp(40px, 6.2vw, 64px); line-height: 1; letter-spacing: -0.05em;
@@ -280,6 +316,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn, .gallery-grid img { transition: none; }
+  .art img { animation: none; opacity: 1; translate: none; transition: none; }
 }
 
 /* =========================================================
@@ -310,13 +347,10 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   .nav-pill a::after { display: none; }
 
   /* services stack; tentacle art becomes a faded backdrop */
+  .service { --art: min(440px, 110vw); }
   .service.art-left, .service.art-right { grid-template-columns: 1fr; min-height: 0; }
-  .service-art {
-    position: absolute; top: 0; height: 100%; width: 60%; max-height: none;
-    opacity: .3; pointer-events: none;
-  }
-  .art-left  .service-art { left: 0; }
-  .art-right .service-art { right: 0; }
+  .art-cell { position: absolute; inset: 0; pointer-events: none; }
+  .art { opacity: .35; }
   .service-text { position: relative; padding-block: 72px; }
   :root { --stack-step: 16px; }
 

@@ -44,8 +44,8 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <img class="hero-bg" src="images/hero-crowd.jpg" alt="" />
-      <div class="hero-content">
-        <img class="hero-logo" src="images/logo-hero.png" alt="PULPO Production" width="480" height="512" />
+      <div class="hero-art">
+        <img class="hero-logo" src="images/logo-hero.png" alt="PULPO Production" width="1200" height="1200" />
         <a href="#services" class="btn btn-beige">SERVICES</a>
       </div>
     </section>
@@ -53,7 +53,7 @@
     <!-- ============ INTRO + SERVICES (sticky stack, see css "stacking sections") ============ -->
     <div class="stack">
 
-    <section class="intro" id="about" style="--stack:0">
+    <section class="intro stack-item" id="about" style="--stack:0">
       <div class="container narrow reveal">
         <h2 class="intro-title">A flexible partner for event projects.</h2>
         <p>PULPO supports event organisers, agencies and businesses through operational coordination, event technology and on-site expertise.</p>
@@ -65,8 +65,8 @@
     <!-- ============ SERVICES ============ -->
     <span id="services" class="anchor"></span>
 
-      <section class="service service--blue art-left" style="--stack:0">
-        <img class="service-art" src="images/tentacle-blue.png" alt="" />
+      <section class="service service--blue art-left stack-item" style="--stack:0">
+        <div class="art-cell" aria-hidden="true"><div class="art"><img src="images/tentacle-blue.png" alt="" /></div></div>
         <div class="service-text reveal">
           <h3>EVENT OPERATIONS</h3>
           <p class="service-lead">Preparation and operational coordination of events.</p>
@@ -80,7 +80,7 @@
         </div>
       </section>
 
-      <section class="service service--cream art-right" style="--stack:1">
+      <section class="service service--cream art-right stack-item" style="--stack:1">
         <div class="service-text reveal">
           <h3>EVENT TECHNOLOGY</h3>
           <p class="service-lead">Deployment and support of event technology solutions.</p>
@@ -92,11 +92,11 @@
             <li>Operational and technical assistance.</li>
           </ul>
         </div>
-        <img class="service-art" src="images/tentacle-tech.png" alt="" />
+        <div class="art-cell" aria-hidden="true"><div class="art"><img src="images/tentacle-tech.png" alt="" /></div></div>
       </section>
 
-      <section class="service service--navy art-left" style="--stack:2">
-        <img class="service-art" src="images/tentacle-dark.png" alt="" />
+      <section class="service service--navy art-left stack-item" style="--stack:2">
+        <div class="art-cell" aria-hidden="true"><div class="art"><img src="images/tentacle-dark.png" alt="" /></div></div>
         <div class="service-text reveal">
           <h3>TEAM &amp; PARTNER COORDINATION</h3>
           <p class="service-lead">Coordination of teams and event stakeholders.</p>
@@ -110,7 +110,7 @@
         </div>
       </section>
 
-      <section class="service service--sky art-right" style="--stack:3">
+      <section class="service service--sky art-right stack-item" style="--stack:3">
         <div class="service-text reveal">
           <h3>CLIENT SUPPORT &amp; DEPLOYMENT</h3>
           <p class="service-lead">Client support and technology implementation.</p>
@@ -122,12 +122,12 @@
             <li>Deployment monitoring and follow-up.</li>
           </ul>
         </div>
-        <img class="service-art" src="images/tentacle-sky.png" alt="" />
+        <div class="art-cell" aria-hidden="true"><div class="art"><img src="images/tentacle-sky.png" alt="" /></div></div>
       </section>
 
-    </div><!-- /.stack -->
-
     <!-- ============ GALLERY ============ -->
+    <!-- The gallery is the last item in .stack but is NOT sticky: it scrolls up
+         over Client Support and hides all the strips once it reaches the top. -->
     <section class="gallery" id="gallery">
       <div class="container reveal">
         <h2 class="section-title">Trusted on the field</h2>
@@ -148,6 +148,8 @@
         <figure><img src="images/gallery-10.jpg" alt="PULPO on site at an event" loading="lazy" /></figure>
       </div>
     </section>
+
+    </div><!-- /.stack -->
 
     <!-- ============ PARTNER LOGOS ============ -->
     <section class="partners" aria-label="Organisations we have worked with">

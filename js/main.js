@@ -18,7 +18,7 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(fa
 // Each section in .stack sticks at (--stack × --stack-step). If a section is
 // taller than the space below that point, it would freeze before its bottom
 // is visible, so we raise its sticky point (negative top) just enough.
-const stackSections = document.querySelectorAll(".stack > section");
+const stackSections = document.querySelectorAll(".stack > .stack-item");
 function fitStack() {
   const step = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--stack-step")) || 0;
   stackSections.forEach((sec) => {
@@ -41,7 +41,7 @@ const io = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.15 });
-document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+document.querySelectorAll(".reveal, .art").forEach((el) => io.observe(el));
 
 // ---- Contact form: send without leaving the page ----
 // Without JS the form still works: it posts to Web3Forms and shows their thank-you page.
