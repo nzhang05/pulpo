@@ -31,6 +31,7 @@ function fitStack() {
 fitStack();
 window.addEventListener("resize", fitStack);
 window.addEventListener("load", fitStack); // fonts/images can change heights
+document.addEventListener("languagechange", fitStack); // French text is longer
 
 // ---- Fade-up reveal on scroll ----
 const io = new IntersectionObserver((entries) => {
@@ -48,16 +49,17 @@ document.querySelectorAll(".reveal, .art").forEach((el) => io.observe(el));
 document.querySelectorAll("[data-contact-form]").forEach((form) => {
   const status = form.querySelector(".form-status");
   const button = form.querySelector('button[type="submit"]');
+  const t = (key, fallback) => (window.i18n ? window.i18n.t(key) : fallback);
   const show = (msg, kind) => { status.textContent = msg; status.className = `form-status is-${kind}`; };
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (form.access_key.value.includes("YOUR_ACCESS_KEY")) {
-      show("Form not configured yet: add the Web3Forms access key in index.html.", "error");
+      show(t("contact.unconfigured", "Form not configured yet: add the Web3Forms access key in index.html."), "error");
       return;
     }
     button.disabled = true;
-    show("Sending…", "pending");
+    show(t("contact.sending", "Sending…"), "pending");
     try {
       const res = await fetch(form.action, {
         method: "POST",
@@ -67,9 +69,9 @@ document.querySelectorAll("[data-contact-form]").forEach((form) => {
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data.message || "Request failed");
       form.reset();
-      show("Thanks! Your message has been sent.", "ok");
+      show(t("contact.ok", "Thanks! Your message has been sent."), "ok");
     } catch (err) {
-      show("Sorry, something went wrong. Please email us directly at alcarasproduction@gmail.com.", "error");
+      show(t("contact.error", "Sorry, something went wrong. Please email us directly at alcarasproduction@gmail.com."), "error");
     } finally {
       button.disabled = false;
     }

@@ -99,6 +99,14 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 }
 .cta-pill:hover { background: var(--cream); color: var(--deep-blue); }
 
+.lang-toggle {
+  width: 50px; height: 50px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--nav-blue); color: var(--cream);
+  font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: .04em;
+  transition: background-color .2s ease, color .2s ease;
+}
+.lang-toggle:hover, .lang-toggle:focus-visible { background: var(--cream); color: var(--nav-blue); }
+
 .menu-toggle {
   display: none;
   width: 50px; height: 50px; border-radius: 50%;
@@ -226,9 +234,36 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   margin: 0 auto; padding: 0 var(--gutter);
   columns: 2; column-gap: 62px;
 }
-.gallery-grid figure { break-inside: avoid; margin-bottom: 62px; overflow: hidden; }
-.gallery-grid img { width: 100%; transition: transform .6s ease; }
-.gallery-grid figure:hover img { transform: scale(1.04); }
+.gallery-grid figure {
+  position: relative; break-inside: avoid; margin-bottom: 62px; overflow: hidden;
+  cursor: pointer; outline: none;
+}
+.gallery-grid img { width: 100%; transition: transform .6s ease, filter .5s ease; }
+/* Hover (or tap / keyboard focus): blur the photo and reveal its caption */
+.gallery-grid figcaption {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 8px;
+  padding: 28px;
+  background: linear-gradient(to top, rgba(14, 18, 21, .85), rgba(14, 18, 21, .15) 70%);
+  color: var(--cream); font-family: var(--font-display);
+  opacity: 0; transition: opacity .4s ease;
+}
+.gallery-grid figcaption strong {
+  font-weight: 400; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1;
+  font-size: clamp(24px, 2.6vw, 32px);
+  translate: 0 14px; transition: translate .5s cubic-bezier(.2, .7, .2, 1);
+}
+.gallery-grid figcaption span {
+  font-size: 16px; line-height: 1.45;
+  translate: 0 14px; transition: translate .5s cubic-bezier(.2, .7, .2, 1) .05s;
+}
+.gallery-grid figure:hover img,
+.gallery-grid figure:focus-within img { filter: blur(6px) brightness(.75); transform: scale(1.06); }
+.gallery-grid figure:hover figcaption,
+.gallery-grid figure:focus-within figcaption { opacity: 1; }
+.gallery-grid figure:hover figcaption > *,
+.gallery-grid figure:focus-within figcaption > * { translate: 0 0; }
+.gallery-grid figure:focus-visible { box-shadow: 0 0 0 3px var(--cream); }
 
 /* ---------- partner logos ---------- */
 .partners { background: var(--cream); padding: 100px var(--gutter) 60px; }
@@ -307,6 +342,13 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .footer-bottom a:hover { text-decoration: underline; }
 .copyright { justify-self: end; }
 
+/* ---------- language ----------
+   French visitors: keep the page hidden until js/i18n.js has swapped the text in,
+   so they never see a flash of English. Failsafe: show it anyway after 1.5s. */
+html[data-lang="fr"]:not(.i18n-ready) body { visibility: hidden; animation: i18n-failsafe 0s 1.5s forwards; }
+@keyframes i18n-failsafe { to { visibility: visible; } }
+html[lang="fr"] .service h3 { font-size: clamp(30px, 5vw, 72px); line-height: 1.02; }
+
 /* ---------- scroll reveal ---------- */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
@@ -317,6 +359,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn, .gallery-grid img { transition: none; }
   .art img { animation: none; opacity: 1; translate: none; transition: none; }
+  .gallery-grid img, .gallery-grid figcaption, .gallery-grid figcaption > * { transition: none; }
 }
 
 /* =========================================================
@@ -335,6 +378,8 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   .menu-toggle { display: flex; }
   .cta-pill { height: 44px; padding: 0 18px; font-size: 14px; border-width: 2px; }
   .brand-pill { height: 44px; }
+  .lang-toggle { width: 44px; height: 44px; font-size: 13px; }
+  .header-right { gap: 8px; }
   .nav-pill {
     position: absolute; top: calc(var(--header-h) - 4px); right: var(--gutter); left: var(--gutter);
     flex-direction: column; align-items: stretch; gap: 0;

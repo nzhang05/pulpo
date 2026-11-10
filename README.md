@@ -16,7 +16,8 @@ Node 18+ is only needed for those two helper commands. The site itself is static
 ```
 index.html              all page content (text, images, links) — edit copy here
 css/styles.css          all styling; colours and fonts are tokens at the top (:root)
-js/main.js              mobile menu, sticky-stack sizing, fade-in on scroll
+js/i18n.js              French translations + EN/FR switch
+js/main.js              mobile menu, sticky-stack sizing, fade-in on scroll, contact form
 images/                 illustrations included; photos and logos added by fetch-images
 scripts/fetch-images.mjs  maps each local image name to its Wix media id
 ```
@@ -32,6 +33,18 @@ scripts/fetch-images.mjs  maps each local image name to its Wix media id
 | Add a partner logo | Add an `<li>` to `.logo-row` |
 | Change the stats | Edit the `.spotlight` block |
 | Change the stacking strips | `--stack-step` in `css/styles.css` (24px desktop, 16px mobile); each section's order is its `style="--stack:N"` in `index.html` |
+
+## English / French
+
+English text is written in `index.html`; French is in `js/i18n.js`, matched by the `data-i18n="key"` attribute on each element.
+
+- **Change French text:** edit the line with that key in `js/i18n.js`.
+- **Add a new translatable element:** give it `data-i18n="my.key"` in `index.html` and add `"my.key": "…"` to `js/i18n.js`. Image alt texts use `data-i18n-alt`.
+- Visitors get French automatically if their browser is in French; the FR/EN button switches and remembers the choice. Links can force a language: `https://pulpoproduction.com/?lang=fr`.
+
+## Gallery captions
+
+Each photo in `.gallery-grid` has a `<figcaption>` (title + one line) that appears with a blur on hover, or on tap on phones. Edit the English in `index.html` and the French in `js/i18n.js` (keys `g1.title`, `g1.text`, … in photo order).
 
 ## Placeholders to fill in
 
