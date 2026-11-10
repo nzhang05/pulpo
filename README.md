@@ -44,11 +44,14 @@ These were template leftovers on the Wix site:
 
 ## Deploying
 
-Any static host works — upload the folder (after running `fetch-images`):
+Live at **https://pulpoproduction.com**, hosted on Cloudflare Pages and connected to the GitHub repo `nzhang05/pulpo`.
 
-- **Netlify / Cloudflare Pages:** drag-and-drop the folder, or connect the git repo with no build command and `.` as the publish directory.
-- **Vercel:** `npx vercel` in this folder; framework preset "Other".
-- **GitHub Pages:** push to a repo, Settings → Pages → deploy from branch, root folder.
-- **Any server (nginx/Apache/OVH/o2switch…):** copy the files into the web root.
+Every push to `main` redeploys automatically (about a minute):
 
-Then point your domain at the host and you can cancel the Wix plan.
+```bash
+git add -A
+git commit -m "Describe the change"
+git push
+```
+
+Cloudflare Pages build settings: framework preset **None**, no build command, output directory `/`.
