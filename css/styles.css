@@ -266,12 +266,15 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .gallery-grid figure:focus-visible { box-shadow: 0 0 0 3px var(--cream); }
 
 /* ---------- partner logos ---------- */
-.partners { background: var(--cream); padding: 100px var(--gutter) 60px; }
+.partners { background: var(--cream); padding: 100px var(--gutter) 80px; }
 .logo-row {
-  list-style: none; margin: 0 auto; padding: 0; max-width: 980px;
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; align-items: center;
+  list-style: none; margin: 0; padding: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: clamp(24px, 4vw, 64px);
 }
-.logo-row img { width: 100%; max-width: 155px; margin-inline: auto; }
+/* each logo's width is proportional to its --w (set in index.html) */
+.logo-row li { flex: var(--w, 1) 1 0; min-width: 0; }
+.logo-row img { width: 100%; }
 
 /* ---------- stats spotlight ---------- */
 .stats {
@@ -366,7 +369,8 @@ html[lang="fr"] .service h3 { font-size: clamp(30px, 5vw, 72px); line-height: 1.
    Responsive
    ========================================================= */
 @media (max-width: 900px) {
-  .logo-row { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
+  .logo-row { flex-wrap: wrap; justify-content: center; column-gap: 7vw; row-gap: 36px; }
+  .logo-row li { flex: 0 0 auto; width: calc(var(--w, 1) * 13vw); }
   .footer-bottom { grid-template-columns: repeat(2, 1fr); }
   .copyright { justify-self: start; }
 }
@@ -398,6 +402,9 @@ html[lang="fr"] .service h3 { font-size: clamp(30px, 5vw, 72px); line-height: 1.
   .art { opacity: .35; }
   .service-text { position: relative; padding-block: 72px; }
   :root { --stack-step: 16px; }
+
+  .logo-row { column-gap: 9vw; row-gap: 40px; }
+  .logo-row li { width: calc(var(--w, 1) * 17vw); }
 
   .gallery-grid { columns: 1; }
   .gallery-grid figure { margin-bottom: 24px; }

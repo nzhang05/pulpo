@@ -19,6 +19,7 @@ css/styles.css          all styling; colours and fonts are tokens at the top (:r
 js/i18n.js              French translations + EN/FR switch
 js/main.js              mobile menu, sticky-stack sizing, fade-in on scroll, contact form
 images/                 illustrations included; photos and logos added by fetch-images
+icons/, favicon.ico     tab icon (tentacle) + home-screen icons (full logo); site.webmanifest lists them
 scripts/fetch-images.mjs  maps each local image name to its Wix media id
 ```
 
