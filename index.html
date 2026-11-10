@@ -45,7 +45,7 @@
 <body>
 
   <!-- ============ HEADER ============ -->
-  <header class="site-header" id="top">
+  <header class="site-header">
     <a href="#top" class="brand-pill">PULPO</a>
 
     <div class="header-right">
@@ -76,7 +76,10 @@
     <!-- ============ INTRO + SERVICES (sticky stack, see css "stacking sections") ============ -->
     <div class="stack">
 
-    <section class="intro stack-item" id="about" style="--stack:0">
+    <!-- Link targets are plain markers: the sections themselves are sticky and
+         count as "already on screen" once passed, so links to them wouldn't scroll. -->
+    <span id="about" class="anchor"></span>
+    <section class="intro stack-item" style="--stack:0">
       <div class="container narrow reveal">
         <h2 class="intro-title" data-i18n="intro.title">A flexible partner for event projects.</h2>
         <p data-i18n="intro.p1">PULPO supports event organisers, agencies and businesses through operational coordination, event technology and on-site expertise.</p>

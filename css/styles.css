@@ -147,6 +147,8 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   top: calc(var(--stack, 0) * var(--stack-step));
 }
 
+.anchor { display: block; height: 0; }
+
 /* ---------- intro ---------- */
 .intro { background: var(--dark); padding: 100px 0; text-align: center; min-height: 447px; display: grid; align-content: center; }
 .intro-title {
