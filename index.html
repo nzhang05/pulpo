@@ -227,25 +227,24 @@
     </div><!-- /.stack -->
 
     <!-- ============ THE FOUNDER ============
-         Two columns: portrait (images/founder.jpg) on the left, name, role and text on the right. -->
+         Same layout as the Wix site: big title, portrait on the left, text on the right,
+         on the partners' cream background. Elements with .founder-reveal animate in on
+         scroll (js/main.js); --d is each one's delay. The photo also drifts slightly (parallax). -->
     <span id="founder" class="anchor"></span>
     <section class="founder" aria-labelledby="founder-title">
-      <div class="container founder-inner">
-        <figure class="founder-photo reveal">
-          <img src="images/founder.jpg" alt="Margot Alcaras" width="800" height="800" loading="lazy" />
-        </figure>
-        <div class="founder-body reveal">
-          <p class="eyebrow" data-i18n="founder.eyebrow">The Founder</p>
-          <h2 class="founder-name" id="founder-title">Margot Alcaras</h2>
-          <p class="founder-role" data-i18n="founder.role">Founder</p>
-          <p class="founder-tagline" data-i18n="founder.tagline">Built on experience. Driven by possibilities.</p>
+      <div class="container">
+        <h2 class="founder-title founder-reveal" id="founder-title" data-i18n="founder.eyebrow">THE FOUNDER</h2>
+        <div class="founder-inner">
+          <figure class="founder-photo founder-reveal">
+            <img src="images/founder.jpg" alt="Margot Alcaras" width="485" height="709" loading="lazy" data-parallax />
+          </figure>
           <div class="founder-text">
-            <p data-i18n="founder.p1">I'm Margot Alcaras, founder of PULPO.</p>
-            <p data-i18n="founder.p2">My experience spans major international events, sports and outdoor projects, corporate events and event technology.</p>
-            <p data-i18n="founder.p3">Over the years, I've developed a cross-disciplinary vision of event production: understanding organisational challenges, anticipating on-site constraints, bringing the right people together and turning ideas into meaningful experiences.</p>
-            <p data-i18n="founder.p4">I created PULPO to offer a different approach to event production: flexible, human and adaptable to the diversity of projects.</p>
-            <p data-i18n="founder.p5">Working alongside organisers, connecting expertise and supporting projects from concept to delivery.</p>
-            <p data-i18n="founder.p6">PULPO is the drive not to be limited to one format, one sector or one way of doing things.</p>
+          <p class="founder-reveal" style="--d:0.15s" data-i18n="founder.p1">I'm Margot Alcaras, founder of PULPO.</p>
+          <p class="founder-reveal" style="--d:0.27s" data-i18n="founder.p2">My experience spans major international events, sports and outdoor projects, corporate events and event technology.</p>
+          <p class="founder-reveal" style="--d:0.39s" data-i18n="founder.p3">Over the years, I've developed a cross-disciplinary vision of event production: understanding organisational challenges, anticipating on-site constraints, bringing the right people together and turning ideas into meaningful experiences.</p>
+          <p class="founder-reveal" style="--d:0.51s" data-i18n="founder.p4">I created PULPO to offer a different approach to event production: flexible, human and adaptable to the diversity of projects.</p>
+          <p class="founder-reveal" style="--d:0.63s" data-i18n="founder.p5">Working alongside organisers, connecting expertise and supporting projects from concept to delivery.</p>
+          <p class="founder-reveal" style="--d:0.75s" data-i18n="founder.p6">PULPO is the drive not to be limited to one format, one sector or one way of doing things.</p>
           </div>
         </div>
       </div>

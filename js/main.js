@@ -42,7 +42,23 @@ const io = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.15 });
-document.querySelectorAll(".reveal, .art").forEach((el) => io.observe(el));
+document.querySelectorAll(".reveal, .art, .founder-reveal").forEach((el) => io.observe(el));
+
+// ---- Founder portrait: gentle parallax drift while scrolling past ----
+const parallaxImgs = document.querySelectorAll("[data-parallax]");
+if (parallaxImgs.length && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  let ticking = false;
+  const update = () => {
+    parallaxImgs.forEach((img) => {
+      const r = img.parentElement.getBoundingClientRect();
+      const progress = (r.top + r.height / 2) / (innerHeight + r.height) - 0.5; // -0.5 … 0.5
+      img.style.transform = `translateY(${(-progress * 10 - 5).toFixed(2)}%)`;
+    });
+    ticking = false;
+  };
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+}
 
 // ---- Contact form: send without leaving the page ----
 // Without JS the form still works: it posts to Web3Forms and shows their thank-you page.

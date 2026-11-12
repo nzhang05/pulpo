@@ -101,9 +101,7 @@ const FR = {
   "sport.4.title": "Activation de marque",
   "sport.4.text": "Présence et visibilité des marques au cœur de l'événement.",
 
-  "founder.eyebrow": "The Founder",
-  "founder.tagline": "Built on experience. Driven by possibilities.",
-  "founder.role": "Fondatrice",
+  "founder.eyebrow": "THE FOUNDER",
   "founder.p1": "Je suis Margot Alcaras, fondatrice de PULPO.",
   "founder.p2": "Mon expérience couvre les grands événements internationaux, les projets sportifs et outdoor, l'événementiel corporate et les technologies événementielles.",
   "founder.p3": "Au fil des années, j'ai développé une vision transversale de la production événementielle : comprendre les enjeux d'une organisation, anticiper les contraintes du terrain, réunir les bons interlocuteurs et transformer les idées en expériences qui ont du sens.",
