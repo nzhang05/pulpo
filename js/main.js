@@ -18,6 +18,20 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(fa
 // Each section in .stack sticks at (--stack × --stack-step). If a section is
 // taller than the space below that point, it would freeze before its bottom
 // is visible, so we raise its sticky point (negative top) just enough.
+// ---- Tentacles: size each service's artwork to the section's height (desktop) ----
+// The art is square; we make it as tall as its section (max half the screen width)
+// so the tentacle always runs from the bottom edge up the whole section.
+function sizeArt() {
+  document.querySelectorAll(".service").forEach((s) => {
+    s.style.removeProperty("--art");
+    if (innerWidth <= 760) return;              // phones: fixed size from the CSS
+    for (let i = 0; i < 3; i++) {               // a few passes: a wider art column makes the text taller
+      const art = Math.min(s.offsetHeight, innerWidth * 0.5, 900);
+      s.style.setProperty("--art", `${Math.round(art)}px`);
+    }
+  });
+}
+
 const stackSections = document.querySelectorAll(".stack > .stack-item");
 function fitStack() {
   const step = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--stack-step")) || 0;
@@ -28,10 +42,11 @@ function fitStack() {
     sec.style.top = room < wanted ? `${room}px` : "";
   });
 }
-fitStack();
-window.addEventListener("resize", fitStack);
-window.addEventListener("load", fitStack); // fonts/images can change heights
-document.addEventListener("languagechange", fitStack); // French text is longer
+const relayout = () => { sizeArt(); fitStack(); };
+relayout();
+window.addEventListener("resize", relayout);
+window.addEventListener("load", relayout); // fonts/images can change heights
+document.addEventListener("languagechange", relayout); // French text is longer
 
 // ---- Fade-up reveal on scroll ----
 const io = new IntersectionObserver((entries) => {
