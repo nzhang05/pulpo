@@ -207,7 +207,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   font-weight: 400; text-transform: uppercase;
   /* 104px as on the original Wix site, shrunk only when the longest word wouldn't
      fit the column. --longest-word = width of the longest heading word ÷ font size
-     (TECHNOLOGY in English, ÉVÉNEMENTIEL in French, plus a little margin). */
+     (TECHNOLOGY, plus a little margin; the names are the same in both languages). */
   --longest-word: 6.55;
   font-size: min(104px, 100cqi / var(--longest-word)); line-height: .95; letter-spacing: -0.05em;
   margin-bottom: 28px;
@@ -292,6 +292,46 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .gallery-grid figure:hover figcaption > *,
 .gallery-grid figure:focus-within figcaption > * { translate: 0 0; }
 .gallery-grid figure:focus-visible { box-shadow: 0 0 0 3px var(--cream); }
+
+/* ---------- the founder ----------
+   Editorial block on cream, flowing into the partner logos below. */
+.founder { background: var(--cream); color: var(--dark); padding: 130px 0 30px; }
+.founder-inner {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 7vw, 110px); align-items: start;
+}
+.eyebrow {
+  font-family: var(--font-display); font-size: 14px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--nav-blue); display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
+}
+.eyebrow::before { content: ""; width: 36px; height: 1px; background: currentColor; }
+.founder-tagline {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(36px, 4.6vw, 62px); letter-spacing: -0.05em; line-height: 1.02;
+}
+.founder-photo { margin-top: 36px; max-width: 380px; aspect-ratio: 4 / 5; overflow: hidden; }
+.founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+.founder-sign { margin-top: 44px; padding-top: 18px; border-top: 1px solid rgba(14, 18, 21, .2); }
+.founder-name { font-family: var(--font-display); font-size: 26px; letter-spacing: -0.03em; }
+.founder-role { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: #6b6b62; margin-top: 4px; }
+.founder-trail { margin-top: 32px; }
+.founder-trail-label { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #6b6b62; margin-bottom: 12px; }
+.founder-trail ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.founder-trail li {
+  font-family: var(--font-display); font-size: 14px;
+  border: 1px solid rgba(14, 18, 21, .25); border-radius: 999px; padding: 6px 14px;
+}
+.founder-quote {
+  margin: 0; position: relative; padding-top: 56px;
+  font-family: var(--font-display); font-size: 19px; line-height: 1.6;
+}
+.founder-quote::before {          /* big opening quote mark in PULPO blue */
+  content: "\201C"; position: absolute; top: -18px; left: -6px;
+  font-size: 120px; line-height: 1; color: var(--nav-blue);
+}
+.founder-quote p + p { margin-top: 18px; }
+.founder-quote p:first-child { font-size: clamp(22px, 2.4vw, 28px); letter-spacing: -0.03em; line-height: 1.3; }
+.founder-quote p:last-child { font-weight: 500; }
 
 /* ---------- partner logos ---------- */
 .partners { background: var(--cream); padding: 100px var(--gutter) 80px; }
@@ -378,7 +418,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
    so they never see a flash of English. Failsafe: show it anyway after 1.5s. */
 html[data-lang="fr"]:not(.i18n-ready) body { visibility: hidden; animation: i18n-failsafe 0s 1.5s forwards; }
 @keyframes i18n-failsafe { to { visibility: visible; } }
-html[lang="fr"] .service h3 { --longest-word: 7.3; line-height: 1.02; }
+html[lang="fr"] .service h3 { line-height: 1.02; } /* service names are English in both languages */
 
 /* ---------- scroll reveal ---------- */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
@@ -424,6 +464,9 @@ html[lang="fr"] .service h3 { --longest-word: 7.3; line-height: 1.02; }
   .nav-pill a::after { display: none; }
 
   /* services stack; tentacle art becomes a faded backdrop */
+  .founder { padding-top: 90px; }
+  .founder-inner { grid-template-columns: 1fr; gap: 40px; }
+  .founder-quote { font-size: 17px; }
   .service { --art: min(440px, 110vw); }
   .service.art-left, .service.art-right { grid-template-columns: 1fr; min-height: 0; }
   .art-cell { position: absolute; inset: 0; pointer-events: none; }
