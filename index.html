@@ -160,50 +160,88 @@
         <p class="section-sub" data-i18n="gallery.sub">A selection of events, organisations and professional environments in which PULPO's expertise has been developed.</p>
       </div>
 
-      <!-- Add / remove photos here. Any aspect ratio works (masonry columns).
-           Each caption shows on hover (desktop) or tap (phones). Edit the English here
-           and the French in js/i18n.js under the same "g1.title" / "g1.text" keys. -->
-      <div class="gallery-grid">
-        <figure tabindex="0">
-          <img src="images/gallery-01.jpg" alt="Laptop showing a planning spreadsheet in an empty event hall" data-i18n-alt="g1.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g1.title">Setup day</strong><span data-i18n="g1.text">Planning access and visitor flows in the venue before doors open.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-02.jpg" alt="Wilout ticketing kit: bag, chargers and a row of radios" data-i18n-alt="g2.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g2.title">Ticketing kit</strong><span data-i18n="g2.text">Wilout ticketing, access control and cashless kit, radios charged and ready.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-03.jpg" alt="IRONMAN World Championship Nice 2024 accreditation, cap and bags" data-i18n-alt="g3.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g3.title">IRONMAN World Championship</strong><span data-i18n="g3.text">Accreditation and event kit for the World Championship in Nice, 2024.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-04.jpg" alt="Team at the Luminiscence stand at night" data-i18n-alt="g4.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g4.title">Luminiscence</strong><span data-i18n="g4.text">Welcome and ticketing team for the immersive light show, at night.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-05.jpg" alt="Team member pitch-side in a stadium" data-i18n-alt="g5.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g5.title">Match day</strong><span data-i18n="g5.text">Pitch-side operations before kick-off.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-06.jpg" alt="Digital mixing console backstage" data-i18n-alt="g6.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g6.title">Behind the scenes</strong><span data-i18n="g6.text">Backstage with the technical crew.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-07.jpg" alt="Wilout staff working at a laptop on site" data-i18n-alt="g7.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g7.title">On-site support</strong><span data-i18n="g7.text">Helping run ticketing and cashless operations at the venue.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-08.jpg" alt="Garorock festival entrance arch and queue lanes" data-i18n-alt="g8.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g8.title">Garorock</strong><span data-i18n="g8.text">Festival entrance and queue lanes, set up before the crowds arrive.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-09.jpg" alt="Team member in an IRONMAN World Championship polo" data-i18n-alt="g9.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g9.title">IRONMAN World Championship</strong><span data-i18n="g9.text">Part of the event team, accreditation on.</span></figcaption>
-        </figure>
-        <figure tabindex="0">
-          <img src="images/gallery-10.jpg" alt="Team photo in a show venue lit in red" data-i18n-alt="g10.alt" loading="lazy" />
-          <figcaption><strong data-i18n="g10.title">Show night</strong><span data-i18n="g10.text">The team on site before opening.</span></figcaption>
-        </figure>
+      <!-- Photos are grouped by division. To add a photo, copy a <figure> inside the right
+           .gallery-grid; English text goes here, French in js/i18n.js under the same keys
+           (e.g. "corporate.1.title"). Captions show on hover (desktop) or tap (phones). -->
+      <div class="pole" id="pole-corporate">
+        <div class="container pole-head reveal">
+          <h3 class="pole-title" data-i18n="corporate.title">Corporate</h3>
+          <p class="pole-text" data-i18n="corporate.text">Seminars, conferences, company parties and incentives. We handle the whole event: guest welcome, catering, decoration, logistics and supplier coordination, so your teams and clients enjoy a seamless experience.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure tabindex="0">
+            <img src="images/corporate-01.jpg" alt="Audience at a business club conference in front of a presentation screen" data-i18n-alt="corporate.1.alt" loading="lazy" />
+            <figcaption><strong data-i18n="corporate.1.title">Business conference</strong><span data-i18n="corporate.1.text">Organisation and guest welcome for a business club conference.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/corporate-02.jpg" alt="Catering buffet laid out on a long table" data-i18n-alt="corporate.2.alt" loading="lazy" />
+            <figcaption><strong data-i18n="corporate.2.title">Catering</strong><span data-i18n="corporate.2.text">Buffet set up and served for the guests.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/corporate-03.jpg" alt="Event staff boarding guests onto boats in a Monaco harbour" data-i18n-alt="corporate.3.alt" loading="lazy" />
+            <figcaption><strong data-i18n="corporate.3.title">Guest logistics in Monaco</strong><span data-i18n="corporate.3.text">Staff welcoming and boarding guests onto boats for a corporate event.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/corporate-04.jpg" alt="Guests on the deck of a sailing boat at sea" data-i18n-alt="corporate.4.alt" loading="lazy" />
+            <figcaption><strong data-i18n="corporate.4.title">Incentive at sea</strong><span data-i18n="corporate.4.text">A boat outing for a company&#x27;s teams.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/corporate-05.jpg" alt="Outdoor set with a painted backdrop, rug and candles under pine trees" data-i18n-alt="corporate.5.alt" loading="lazy" />
+            <figcaption><strong data-i18n="corporate.5.title">Decoration &amp; staging</strong><span data-i18n="corporate.5.text">An outdoor space dressed for a company evening.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="pole" id="pole-tech">
+        <div class="container pole-head reveal">
+          <h3 class="pole-title" data-i18n="tech.title">Tech</h3>
+          <p class="pole-text" data-i18n="tech.text">Ticketing, access control, cashless and radios. We deploy and run your event technology, from setup and testing to on-site support, for smooth entries and reliable data.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure tabindex="0">
+            <img src="images/tech-01.jpg" alt="Garorock festival entrance arch and queue lanes" data-i18n-alt="tech.1.alt" loading="lazy" />
+            <figcaption><strong data-i18n="tech.1.title">Garorock</strong><span data-i18n="tech.1.text">Festival entrance and queue lanes, ready before the crowds arrive.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/tech-02.jpg" alt="Festival-goers walking through barrier lanes at an entrance" data-i18n-alt="tech.2.alt" loading="lazy" />
+            <figcaption><strong data-i18n="tech.2.title">Access control</strong><span data-i18n="tech.2.text">Managing queues and checking entries at a festival.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/tech-03.jpg" alt="Wilout staff member helping a festival-goer at a laptop" data-i18n-alt="tech.3.alt" loading="lazy" />
+            <figcaption><strong data-i18n="tech.3.title">Ticketing &amp; cashless support</strong><span data-i18n="tech.3.text">Helping festival-goers and teams on site.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/tech-04.jpg" alt="Equipment cases on shelves, labelled bar by bar" data-i18n-alt="tech.4.alt" loading="lazy" />
+            <figcaption><strong data-i18n="tech.4.title">Equipment logistics</strong><span data-i18n="tech.4.text">Devices prepared, charged and labelled for each bar.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/tech-05.jpg" alt="Laptop showing a planning spreadsheet in an empty event hall" data-i18n-alt="tech.5.alt" loading="lazy" />
+            <figcaption><strong data-i18n="tech.5.title">Site setup</strong><span data-i18n="tech.5.text">Planning access and visitor flows before doors open.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="pole" id="pole-sport">
+        <div class="container pole-head reveal">
+          <h3 class="pole-title" data-i18n="sport.title">Sport</h3>
+          <p class="pole-text" data-i18n="sport.text">Races, trail runs, cycling events and outdoor gatherings. Participant welcome and registration, aid stations and on-the-ground coordination, from start line to finish.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure tabindex="0">
+            <img src="images/sport-01.jpg" alt="Cyclists gathered at the start of a cycling event" data-i18n-alt="sport.1.alt" loading="lazy" />
+            <figcaption><strong data-i18n="sport.1.title">Cycling event start</strong><span data-i18n="sport.1.text">Managing riders on the start line.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/sport-02.jpg" alt="Trail runners on a gravel path" data-i18n-alt="sport.2.alt" loading="lazy" />
+            <figcaption><strong data-i18n="sport.2.title">Trail</strong><span data-i18n="sport.2.text">Supporting runners along the course.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/sport-03.jpg" alt="Outdoor event on a lawn in Valberg" data-i18n-alt="sport.3.alt" loading="lazy" />
+            <figcaption><strong data-i18n="sport.3.title">Outdoor event in Valberg</strong><span data-i18n="sport.3.text">Welcoming the public and coordinating on site.</span></figcaption>
+          </figure>
+          <figure tabindex="0">
+            <img src="images/sport-04.jpg" alt="Aid station table with energy bars and waffles" data-i18n-alt="sport.4.alt" loading="lazy" />
+            <figcaption><strong data-i18n="sport.4.title">Aid station</strong><span data-i18n="sport.4.text">Refreshments ready for the runners.</span></figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 

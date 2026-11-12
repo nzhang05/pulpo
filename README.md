@@ -43,9 +43,9 @@ English text is written in `index.html`; French is in `js/i18n.js`, matched by t
 - **Add a new translatable element:** give it `data-i18n="my.key"` in `index.html` and add `"my.key": "…"` to `js/i18n.js`. Image alt texts use `data-i18n-alt`.
 - Visitors get French automatically if their browser is in French; the FR/EN button switches and remembers the choice. Links can force a language: `https://pulpoproduction.com/?lang=fr`.
 
-## Gallery captions
+## Gallery
 
-Each photo in `.gallery-grid` has a `<figcaption>` (title + one line) that appears with a blur on hover, or on tap on phones. Edit the English in `index.html` and the French in `js/i18n.js` (keys `g1.title`, `g1.text`, … in photo order).
+The gallery is split into three divisions (Corporate, Tech, Sport), each with a heading, a short description of what PULPO offers, and photos. Each photo has a caption (title + one line) that appears with a blur on hover, or on tap on phones. English is in `index.html`, French in `js/i18n.js` under the matching keys (`corporate.title`, `corporate.text`, `corporate.1.title`, …). Photos live in `images/` as `corporate-01.jpg`, `tech-01.jpg`, `sport-01.jpg`, … (resize to about 1600px and strip location data before adding).
 
 ## Placeholders to fill in
 

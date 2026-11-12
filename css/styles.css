@@ -202,10 +202,14 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service--navy  { --shift: 0%;   --origin: 6% 100%;  --sway: 9s;   --cell: .58; --delay: -4s; }
 .service--sky   { --shift: 25%;  --origin: 49% 100%; --sway: 7.5s; --delay: -1s; }
 
-.service-text { padding: 60px var(--gutter); max-width: 720px; }
+.service-text { padding: 60px var(--gutter); max-width: 900px; container-type: inline-size; }
 .service h3 {
   font-weight: 400; text-transform: uppercase;
-  font-size: clamp(36px, 7vw, 96px); line-height: .95; letter-spacing: -0.05em;
+  /* 104px as on the original Wix site, shrunk only when the longest word wouldn't
+     fit the column. --longest-word = width of the longest heading word ÷ font size
+     (COORDINATION in English, ACCOMPAGNEMENT in French, plus a little margin). */
+  --longest-word: 7.2;
+  font-size: min(104px, 100cqi / var(--longest-word)); line-height: .95; letter-spacing: -0.05em;
   margin-bottom: 28px;
   hyphens: manual; overflow-wrap: normal;
 }
@@ -231,16 +235,34 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   font-family: var(--font-display); font-size: 18px; text-align: center;
   max-width: 520px; margin: 0 auto 60px;
 }
-.gallery-grid {
-  max-width: calc(345px * 2 + 62px + var(--gutter) * 2);
-  margin: 0 auto; padding: 0 var(--gutter);
-  columns: 2; column-gap: 62px;
+/* Divisions (Corporate / Tech / Sport): heading + what PULPO offers, then photos */
+.pole + .pole { margin-top: 110px; }
+.pole-head { text-align: center; margin-bottom: 48px; }
+.pole-title {
+  font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.05em; line-height: 1;
+  display: inline-block; padding-bottom: 14px; margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 236, .35);
 }
+.pole-text {
+  font-family: var(--font-display); font-size: 18px; line-height: 1.55;
+  max-width: 640px; margin: 0 auto; color: rgba(255, 255, 236, .85);
+}
+
+/* Rows of up to 3 photos, centred (so 5 photos = 3 + 2). Photos are cropped to 3:4. */
+.gallery-grid {
+  --photo: 300px; --gap: 32px;
+  max-width: calc(var(--photo) * 3 + var(--gap) * 2 + var(--gutter) * 2);
+  margin: 0 auto; padding: 0 var(--gutter);
+  display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap);
+}
+/* exactly 4 photos: two rows of 2 instead of 3 + 1 */
+.gallery-grid:has(> figure:nth-child(4):last-child) { max-width: calc(var(--photo) * 2 + var(--gap) + var(--gutter) * 2); }
 .gallery-grid figure {
-  position: relative; break-inside: avoid; margin-bottom: 62px; overflow: hidden;
+  position: relative; overflow: hidden; width: var(--photo); aspect-ratio: 3 / 4;
   cursor: pointer; outline: none;
 }
-.gallery-grid img { width: 100%; transition: transform .6s ease, filter .5s ease; }
+.gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease, filter .5s ease; }
 /* Hover (or tap / keyboard focus): blur the photo and reveal its caption */
 .gallery-grid figcaption {
   position: absolute; inset: 0;
@@ -352,7 +374,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
    so they never see a flash of English. Failsafe: show it anyway after 1.5s. */
 html[data-lang="fr"]:not(.i18n-ready) body { visibility: hidden; animation: i18n-failsafe 0s 1.5s forwards; }
 @keyframes i18n-failsafe { to { visibility: visible; } }
-html[lang="fr"] .service h3 { font-size: clamp(30px, 5vw, 72px); line-height: 1.02; }
+html[lang="fr"] .service h3 { --longest-word: 9.35; line-height: 1.02; }
 
 /* ---------- scroll reveal ---------- */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
@@ -408,8 +430,10 @@ html[lang="fr"] .service h3 { font-size: clamp(30px, 5vw, 72px); line-height: 1.
   .logo-row { column-gap: 9vw; row-gap: 40px; }
   .logo-row li { width: calc(var(--w, 1) * 17vw); }
 
-  .gallery-grid { columns: 1; }
-  .gallery-grid figure { margin-bottom: 24px; }
+  .gallery-grid { --gap: 20px; }
+  .gallery-grid figure { width: min(100%, 420px); }
+  .pole + .pole { margin-top: 72px; }
+  .pole-head { margin-bottom: 32px; }
 
   .footer-top { padding-block: 20px 60px; }
 }
