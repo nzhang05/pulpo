@@ -1,0 +1,9 @@
+# Files in the repo that should NOT be published on pulpoproduction.com
+# (same syntax as .gitignore; read by Cloudflare when deploying)
+.assetsignore
+.gitignore
+.DS_Store
+README.md
+CLAUDE.md
+package.json
+scripts/
