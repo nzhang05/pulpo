@@ -22,13 +22,11 @@ const FR = {
 
   "hero.cta": "NOS SERVICES",
 
-  "intro.role1.title": "Créateur d'événements",
-  "intro.role1.text": "Nous concevons et développons nos propres concepts, notamment dans le sport et l'outdoor : conception, structuration du projet, plans d'implantation, logistique et pilotage global.",
-  "intro.role2.title": "Coordinateur événementiel",
-  "intro.role2.text": "Nous accompagnons organisations, agences, institutions et marques dans la préparation et le déploiement de leurs événements : direction des opérations, coordination des équipes et des prestataires, bonne exécution du projet.",
-  "intro.title": "PULPO imagine, structure, coordonne et pilote des expériences événementielles.",
-  "intro.lead": "Partenaire des organisations, agences, institutions et marques, nous intervenons à chaque étape d'un projet : de l'idée initiale à sa réalisation, ou en renfort d'une organisation déjà en place.",
-  "intro.close": "Capacité d'adaptation, vision globale et sens du terrain : nous fédérons les bons interlocuteurs autour de chaque projet.",
+
+  "intro.title": "Un partenaire flexible pour vos projets événementiels.",
+  "intro.p1": "PULPO accompagne les organisateurs d'événements, les agences et les entreprises grâce à la coordination opérationnelle, aux technologies événementielles et à son expertise terrain.",
+  "intro.p2": "De la préparation à l'exploitation, nous nous adaptons à vos besoins et devenons une extension de votre équipe.",
+  "intro.p3": "Une approche flexible, concrète et orientée solutions.",
 
   "svc.ops.note": "Nous intervenons aussi en amont pour concevoir et développer un événement de A à Z, pour les institutions et organisations qui souhaitent créer leur propre rendez-vous.",
   "svc.ops.1": "Accompagnement à l'organisation d'événements",

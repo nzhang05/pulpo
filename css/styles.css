@@ -151,25 +151,12 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 
 /* ---------- intro ---------- */
 .intro { background: var(--dark); padding: 100px 0; text-align: center; min-height: 447px; display: grid; align-content: center; }
-.intro-inner { max-width: 1040px; }
 .intro-title {
   font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(30px, 4vw, 50px); letter-spacing: -0.05em; line-height: 1.08;
-  max-width: 900px; margin: 0 auto 28px;
+  font-size: clamp(26px, 3.2vw, 32px); letter-spacing: -0.05em; line-height: 1.2;
+  margin-bottom: 36px;
 }
-.intro-lead { font-size: 18px; max-width: 720px; margin: 0 auto 56px; }
-/* the two positionings, side by side */
-.roles { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; text-align: left; }
-.role { border-top: 1px solid rgba(255, 255, 236, .35); padding-top: 22px; }
-.role-title {
-  font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
-  font-size: clamp(22px, 2.4vw, 28px); letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 14px;
-}
-.role p { color: rgba(255, 255, 236, .85); }
-.intro-close {
-  font-family: var(--font-display); font-size: clamp(18px, 2vw, 22px); letter-spacing: -0.02em;
-  max-width: 760px; margin: 56px auto 0;
-}
+.intro p + p { margin-top: 24px; }
 
 /* ---------- services ---------- */
 .service {
@@ -437,9 +424,6 @@ html[lang="fr"] .service h3 { --longest-word: 7.3; line-height: 1.02; }
   .nav-pill a::after { display: none; }
 
   /* services stack; tentacle art becomes a faded backdrop */
-  .roles { grid-template-columns: 1fr; gap: 32px; }
-  .intro-lead { margin-bottom: 40px; }
-  .intro-close { margin-top: 40px; }
   .service { --art: min(440px, 110vw); }
   .service.art-left, .service.art-right { grid-template-columns: 1fr; min-height: 0; }
   .art-cell { position: absolute; inset: 0; pointer-events: none; }
