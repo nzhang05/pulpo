@@ -7,3 +7,6 @@ README.md
 CLAUDE.md
 package.json
 scripts/
+wrangler.jsonc
+.git/
+chk/

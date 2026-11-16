@@ -1,0 +1,7 @@
+// Cloudflare Workers static assets: the repo root is the site (no build step).
+// Files listed in .assetsignore are not published.
+{
+  "name": "pulpo",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "." }
+}
