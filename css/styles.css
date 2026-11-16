@@ -198,22 +198,22 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service--cream { --pos: 50% 100%; --origin: 25% 100%; --sway: 8.5s; --amp: 1.4deg; --delay: -2s; }
 .service--navy  { --pos: 0% 100%;  --origin: 8% 100%;  --sway: 9s;   --delay: -4s; }
 
-.service-text { padding: 60px var(--gutter); max-width: 900px; container-type: inline-size; }
+.service-text { padding: 56px var(--gutter); max-width: 760px; container-type: inline-size; }
 .service h3 {
   font-weight: 400; text-transform: uppercase;
   /* 104px as on the original Wix site, shrunk only when the longest word wouldn't
      fit the column. --longest-word = width of the longest heading word ÷ font size
      (EXPERIENCES, plus a little margin; the names are the same in both languages). */
   --longest-word: 6.55;
-  font-size: min(104px, 100cqi / var(--longest-word)); line-height: .95; letter-spacing: -0.05em;
-  margin-bottom: 28px;
+  font-size: min(76px, 100cqi / var(--longest-word)); line-height: .95; letter-spacing: -0.05em;
+  margin-bottom: 22px;
   hyphens: manual; overflow-wrap: normal;
 }
-.service-lead { font-size: 18px; margin-bottom: 22px; }
-.service ul { padding-left: 22px; font-size: 18px; line-height: 1.5; }
+.service-lead { font-size: 16px; line-height: 1.55; margin-bottom: 18px; }
+.service ul { padding-left: 20px; font-size: 15px; line-height: 1.6; }
 .service-note {
   margin-top: 24px; padding-left: 16px; border-left: 2px solid currentColor;
-  font-size: 16px; line-height: 1.5; max-width: 560px; opacity: .9;
+  font-size: 14px; line-height: 1.55; max-width: 520px; opacity: .9;
 }
 
 .service--blue  { background: var(--blue);  color: var(--cream); }

@@ -28,7 +28,7 @@ function sizeArt() {
     const img = s.querySelector(".art img");
     const ratio = (+img.getAttribute("width") / +img.getAttribute("height")) || 1;   // drawing proportions (HTML attributes)
     const W = s.clientWidth;
-    const minText = Math.min(860, W * 0.6);
+    const minText = Math.min(700, W * 0.5);
     for (let i = 0; i < 3; i++) {               // a few passes: column width changes the text height
       const needed = s.offsetHeight * 0.97 * ratio / 0.96 + 8;   // matches the .art insets
       const cell = Math.max(220, Math.min(W - minText, needed));
