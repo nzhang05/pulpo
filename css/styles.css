@@ -9,7 +9,8 @@
   --cream:       #ffffec;  /* main light text / light sections */
   --beige:       #e3e3d3;  /* hero button, spotlight */
   --dark:        #0e1215;  /* intro, footer */
-  --navy:        #171525;  /* team section, gallery */
+  --navy:        #171525;  /* gallery */
+  --logo-blue:   #005ca4;  /* tentacles of the home-page logo; Sport, Outdoor & Live Experiences section */
   --blue:        #4035d6;  /* event operations section */
   --nav-blue:    #3024c9;  /* header pills */
   --deep-blue:   #1800ad;  /* "Let's talk" button */
@@ -162,8 +163,8 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service {
   --cell-w: min(420px, 34vw);           /* tentacle column; js/main.js widens it to fill the free space */
   overflow: hidden;
-  display: grid; align-items: center;
-  min-height: max(520px, calc(100svh - 48px));   /* each service fills the screen (minus the stacked strips) */
+  display: grid; align-items: start;              /* title at the top of the section */
+  min-height: 320px;                              /* the section is as tall as its text; the tentacle follows */
   font-family: var(--font-display);
 }
 .service.art-left  { grid-template-columns: var(--cell-w) minmax(0, 1fr); }
@@ -198,19 +199,22 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service--cream { --pos: 50% 100%; --origin: 25% 100%; --sway: 8.5s; --amp: 1.4deg; --delay: -2s; }
 .service--navy  { --pos: 0% 100%;  --origin: 8% 100%;  --sway: 9s;   --delay: -4s; }
 
-.service-text { padding: 56px var(--gutter); width: 100%; max-width: 760px; justify-self: center; container-type: inline-size; } /* centred in the space left by the tentacle */
+.service-text { padding: 56px clamp(24px, 4vw, 64px); width: 100%; container-type: inline-size; } /* fills all the width beside the tentacle */
 .service h3 {
   font-weight: 400; text-transform: uppercase;
   /* 104px as on the original Wix site, shrunk only when the longest word wouldn't
      fit the column. --longest-word = width of the longest heading word ÷ font size
      (EXPERIENCES, plus a little margin; the names are the same in both languages). */
   --longest-word: 6.55;
-  font-size: min(76px, 100cqi / var(--longest-word)); line-height: .95; letter-spacing: -0.05em;
+  font-size: min(max(76px, 4.6vw), 100cqi / var(--longest-word)); line-height: .95; letter-spacing: -0.05em;
   margin-bottom: 22px;
   hyphens: manual; overflow-wrap: normal;
 }
-.service-lead { font-size: 16px; line-height: 1.55; margin-bottom: 18px; }
-.service ul { padding-left: 20px; font-size: 15px; line-height: 1.6; }
+.service-lead { font-size: max(16px, 1.08vw); line-height: 1.55; margin-bottom: 18px; }   /* grows a little on large screens so the text keeps filling the section */
+.service ul { padding-left: 20px; font-size: max(15px, 1vw); line-height: 1.6; column-gap: 48px; }
+.service li { break-inside: avoid; }
+/* wide text column: bullets in two columns so the text fills the section */
+@container (min-width: 720px) { .service ul { columns: 2; } }
 .service-note {
   margin-top: 24px; padding-left: 16px; border-left: 2px solid currentColor;
   font-size: 14px; line-height: 1.55; max-width: 520px; opacity: .9;
@@ -219,7 +223,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service--blue  { background: var(--blue);  color: var(--cream); }
 .service--cream { background: var(--cream); color: #5c5c55; }
 .service--cream h3 { color: var(--muted); }
-.service--navy  { background: var(--navy);  color: var(--cream); }
+.service--navy  { background: var(--logo-blue); color: var(--cream); }
 .service--sky   { background: var(--sky);   color: var(--cream); }
 
 /* ---------- gallery ---------- */
