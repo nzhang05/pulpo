@@ -9,11 +9,11 @@
   --cream:       #ffffec;  /* main light text / light sections */
   --beige:       #e3e3d3;  /* hero button, spotlight */
   --dark:        #0e1215;  /* intro, footer */
-  --navy:        #171525;  /* team section, gallery */
+  --navy:        #171525;  /* gallery */
   --blue:        #4035d6;  /* event operations section */
   --nav-blue:    #3024c9;  /* header pills */
   --deep-blue:   #1800ad;  /* "Let's talk" button */
-  --sky:         #a0bbd0;  /* client support section */
+  --sky:         #a0bbd0;  /* Sport, Outdoor & Live Experiences (Wix "client support & deployment" colour) */
   --muted:       #a8a89d;  /* event technology text */
   --stat-purple: #49455b;
   --black:       #000;
@@ -196,7 +196,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 
 .service--blue  { --pos: 50% 100%; --origin: 45% 100%; --sway: 7s; }
 .service--cream { --pos: 50% 100%; --origin: 25% 100%; --sway: 8.5s; --amp: 1.4deg; --delay: -2s; }
-.service--navy  { --pos: 0% 100%;  --origin: 8% 100%;  --sway: 9s;   --delay: -4s; }
+.service--sky    { --pos: 0% 100%;  --origin: 8% 100%;  --sway: 9s;   --delay: -4s; }
 
 .service-text { padding: 56px var(--gutter); width: 100%; max-width: 760px; justify-self: center; container-type: inline-size; } /* centred in the space left by the tentacle */
 .service h3 {
@@ -219,7 +219,6 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service--blue  { background: var(--blue);  color: var(--cream); }
 .service--cream { background: var(--cream); color: #5c5c55; }
 .service--cream h3 { color: var(--muted); }
-.service--navy  { background: var(--navy);  color: var(--cream); }
 .service--sky   { background: var(--sky);   color: var(--cream); }
 
 /* ---------- gallery ---------- */
