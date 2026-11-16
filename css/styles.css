@@ -160,30 +160,25 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 
 /* ---------- services ---------- */
 .service {
-  --art: min(620px, 48vw);              /* size of the square tentacle artwork */
+  --cell-w: min(420px, 34vw);           /* tentacle column; js/main.js widens it to fill the free space */
   overflow: hidden;
   display: grid; align-items: center;
-  min-height: max(520px, var(--art));
+  min-height: 520px;
   font-family: var(--font-display);
 }
-.service.art-left  { grid-template-columns: calc(var(--art) * var(--cell, .6)) 1fr; }
-.service.art-right { grid-template-columns: 1fr calc(var(--art) * var(--cell, .6)); }
+.service.art-left  { grid-template-columns: var(--cell-w) minmax(0, 1fr); }
+.service.art-right { grid-template-columns: minmax(0, 1fr) var(--cell-w); }
 
-/* Tentacles: anchored to the section's bottom edge, rise in when the section
-   scrolls into view, then sway gently from their base. Per-section tuning:
-   --shift  slides the artwork sideways inside its column
+/* Tentacles fill their whole column, from the bottom edge to the top of the section,
+   rise in when the section scrolls into view, then sway gently from their base.
+   Per-section tuning:
+   --pos    which part of the drawing to keep when the column is narrower than the art (object-position)
    --origin the point it pivots around (where the tentacle meets the bottom)
    --sway / --amp  speed and angle of the sway */
 .art-cell { position: relative; align-self: stretch; }
-.art {
-  position: absolute; bottom: -2%;      /* tuck under the edge so the base never lifts */
-  width: var(--art); aspect-ratio: 1;
-  translate: var(--shift, 0) 0;
-}
-.art-left  .art { left: 0; }
-.art-right .art { right: 0; }
+.art { position: absolute; inset: 0 0 -2% 0; }   /* tucked under the bottom edge so the base never lifts */
 .art img {
-  width: 100%; height: 100%;
+  width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 100%);
   transform-origin: var(--origin, 50% 100%);
   animation: sway var(--sway, 7s) ease-in-out var(--delay, 0s) infinite;
   opacity: 0; translate: 0 18%;
@@ -197,10 +192,9 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   50%      { rotate: var(--amp, 2deg);            scale: 1 1.025; }
 }
 
-.service--blue  { --shift: -20%; --origin: 42% 100%; --sway: 7s; }
-.service--cream { --shift: 22%;  --origin: 10% 100%; --sway: 8.5s; --amp: 1.4deg; --cell: .62; --delay: -2s; }
-.service--navy  { --shift: 0%;   --origin: 6% 100%;  --sway: 9s;   --cell: .58; --delay: -4s; }
-.service--sky   { --shift: 25%;  --origin: 49% 100%; --sway: 7.5s; --delay: -1s; }
+.service--blue  { --pos: 45% 100%; --origin: 45% 100%; --sway: 7s; }
+.service--cream { --pos: 35% 100%; --origin: 15% 100%; --sway: 8.5s; --amp: 1.4deg; --delay: -2s; }
+.service--navy  { --pos: 0% 100%;  --origin: 8% 100%;  --sway: 9s;   --delay: -4s; }
 
 .service-text { padding: 60px var(--gutter); max-width: 900px; container-type: inline-size; }
 .service h3 {
@@ -489,9 +483,9 @@ html[lang="fr"] .service h3 { line-height: 1.02; } /* service names are English 
   .founder-photo { height: auto; aspect-ratio: 485 / 709; width: min(100%, 320px); min-height: 0; }
   .founder-text { font-size: 16px; line-height: 1.75; }
   .founder-text p + p { margin-top: 1em; }
-  .service { --art: 240px !important; }
+  .service { --cell-w: auto !important; }
   .service.art-left, .service.art-right { grid-template-columns: 1fr; min-height: 0; }
-  .art-cell { order: 2; height: var(--art); pointer-events: none; }   /* below the text, never behind it */
+  .art-cell { order: 2; height: 300px; pointer-events: none; }   /* below the text, never behind it; full width */
   .service-text { position: relative; padding-block: 64px 12px; }
   :root { --stack-step: 16px; }
 

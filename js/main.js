@@ -18,16 +18,18 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(fa
 // Each section in .stack sticks at (--stack × --stack-step). If a section is
 // taller than the space below that point, it would freeze before its bottom
 // is visible, so we raise its sticky point (negative top) just enough.
-// ---- Tentacles: size each service's artwork to the section's height (desktop) ----
-// The art is square; we make it as tall as its section (max half the screen width)
-// so the tentacle always runs from the bottom edge up the whole section.
+// ---- Tentacles: give each service's artwork all the room the text doesn't need ----
+// The text keeps a comfortable column (up to 860px); the tentacle column takes the rest,
+// but never wider than the section is tall, so the drawing always runs full height.
 function sizeArt() {
   document.querySelectorAll(".service").forEach((s) => {
-    s.style.removeProperty("--art");
-    if (innerWidth <= 760) return;              // phones: fixed size from the CSS
-    for (let i = 0; i < 3; i++) {               // a few passes: a wider art column makes the text taller
-      const art = Math.min(s.offsetHeight, innerWidth * 0.5, 900);
-      s.style.setProperty("--art", `${Math.round(art)}px`);
+    s.style.removeProperty("--cell-w");
+    if (innerWidth <= 760) return;              // phones: tentacle sits under the text (CSS)
+    const W = s.clientWidth;
+    const minText = Math.min(860, W * 0.62);
+    for (let i = 0; i < 3; i++) {               // a few passes: column width changes the text height
+      const cell = Math.max(260, Math.min(W - minText, s.offsetHeight));
+      s.style.setProperty("--cell-w", `${Math.round(cell)}px`);
     }
   });
 }
