@@ -169,16 +169,18 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service.art-left  { grid-template-columns: var(--cell-w) minmax(0, 1fr); }
 .service.art-right { grid-template-columns: minmax(0, 1fr) var(--cell-w); }
 
-/* Tentacles fill their whole column, from the bottom edge to the top of the section,
-   rise in when the section scrolls into view, then sway gently from their base.
+/* Tentacles are always shown whole (never cropped): the drawings are trimmed to their
+   content, the column is sized to the drawing's shape (js/main.js) so it runs the full
+   height of the section, and the image is fitted with object-fit: contain.
+   They rise in when the section scrolls into view, then sway gently from their base.
    Per-section tuning:
-   --pos    which part of the drawing to keep when the column is narrower than the art (object-position)
+   --pos    where the drawing sits in its column (object-position)
    --origin the point it pivots around (where the tentacle meets the bottom)
    --sway / --amp  speed and angle of the sway */
 .art-cell { position: relative; align-self: stretch; }
-.art { position: absolute; inset: 0 0 -2% 0; }   /* tucked under the bottom edge so the base never lifts */
+.art { position: absolute; inset: 3% 2% -1px 2%; }   /* a little room at the top and sides for the sway */
 .art img {
-  width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 100%);
+  width: 100%; height: 100%; object-fit: contain; object-position: var(--pos, 50% 100%);
   transform-origin: var(--origin, 50% 100%);
   animation: sway var(--sway, 7s) ease-in-out var(--delay, 0s) infinite;
   opacity: 0; translate: 0 18%;
@@ -192,8 +194,8 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   50%      { rotate: var(--amp, 2deg);            scale: 1 1.025; }
 }
 
-.service--blue  { --pos: 45% 100%; --origin: 45% 100%; --sway: 7s; }
-.service--cream { --pos: 35% 100%; --origin: 15% 100%; --sway: 8.5s; --amp: 1.4deg; --delay: -2s; }
+.service--blue  { --pos: 50% 100%; --origin: 45% 100%; --sway: 7s; }
+.service--cream { --pos: 50% 100%; --origin: 25% 100%; --sway: 8.5s; --amp: 1.4deg; --delay: -2s; }
 .service--navy  { --pos: 0% 100%;  --origin: 8% 100%;  --sway: 9s;   --delay: -4s; }
 
 .service-text { padding: 60px var(--gutter); max-width: 900px; container-type: inline-size; }
@@ -485,7 +487,7 @@ html[lang="fr"] .service h3 { line-height: 1.02; } /* service names are English 
   .founder-text p + p { margin-top: 1em; }
   .service { --cell-w: auto !important; }
   .service.art-left, .service.art-right { grid-template-columns: 1fr; min-height: 0; }
-  .art-cell { order: 2; height: 300px; pointer-events: none; }   /* below the text, never behind it; full width */
+  .art-cell { order: 2; height: 300px; pointer-events: none; }   /* below the text, never behind it; drawing shown whole */
   .service-text { position: relative; padding-block: 64px 12px; }
   :root { --stack-step: 16px; }
 
