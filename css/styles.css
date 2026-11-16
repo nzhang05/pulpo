@@ -487,6 +487,7 @@ html[lang="fr"] .service h3 { line-height: 1.02; } /* service names are English 
   .service { --cell-w: auto !important; }
   .service.art-left, .service.art-right { grid-template-columns: 1fr; min-height: 0; }
   .art-cell { order: 2; height: 300px; pointer-events: none; }   /* below the text, never behind it; drawing shown whole */
+  .service--sky { --pos: 50% 100%; --origin: 45% 100%; }   /* centred under the text like the other two */
   .service-text { position: relative; padding-block: 64px 12px; }
   :root { --stack-step: 16px; }
 
