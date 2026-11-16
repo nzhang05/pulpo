@@ -35,7 +35,6 @@ const FR = {
   "svc.ops.4": "Coordination entre équipes organisatrices et prestataires techniques",
   "svc.ops.5": "Accompagnement au changement et adoption des nouveaux outils",
   "svc.ops.6": "Supervision opérationnelle et gestion des flux",
-  "svc.ops.note": "Nous intervenons du côté de l'organisateur, au sein de son équipe : le lien entre l'organisation et ses prestataires techniques.",
   "svc.ops.title": "EVENT PRODUCTION & OPERATIONS",
   "svc.ops.lead": "Grands événements, événements internationaux, agences : nous accompagnons les organisateurs dans la coordination opérationnelle de leurs événements et l'intégration de nouvelles solutions technologiques.",
 
@@ -59,7 +58,6 @@ const FR = {
   "gallery.sub": "Création, coordination, accompagnement : un aperçu des projets sur lesquels PULPO intervient.",
 
   "tech.title": "Event Production & Operations",
-  "tech.text": "Intégrés à l'équipe organisatrice, nous coordonnons les opérations et accompagnons l'intégration des solutions technologiques, de la préparation au terrain.",
   "tech.1.alt": "Arche d'entrée de festival et couloirs de barrières",
   "tech.1.title": "Gestion des entrées",
   "tech.1.text": "Concevoir les dispositifs d'accès et coordonner les entrées pour des flux de public fluides.",
@@ -74,7 +72,6 @@ const FR = {
   "tech.4.text": "Planifier, préparer et suivre le matériel pour que chaque zone opérationnelle soit prête avant l'ouverture.",
 
   "corporate.title": "Corporate & Brand Experiences",
-  "corporate.text": "Événements professionnels, séminaires, expériences de marque et événements internes : coordination globale, gestion des prestataires et expérience participants maîtrisée.",
   "corporate.1.alt": "Public d'une conférence devant un écran de présentation",
   "corporate.1.title": "Rencontres professionnelles",
   "corporate.1.text": "Coordonner la logistique, le planning des intervenants et l'accueil des invités pour une expérience sans accroc.",
@@ -89,7 +86,6 @@ const FR = {
   "corporate.4.text": "Travailler avec décorateurs et prestataires pour créer des espaces à l'image de chaque événement.",
 
   "sport.title": "Sport, Outdoor & Live Experiences",
-  "sport.text": "Accompagner compétitions et grands événements sportifs, imaginer des concepts originaux : opérations terrain, expérience participants et spectateurs, environnements outdoor.",
   "sport.1.alt": "Cyclistes rassemblés au départ d'une épreuve",
   "sport.1.title": "Opérations de course",
   "sport.1.text": "Coordonner les opérations le jour de la course, encadrer les équipes terrain et garantir le bon déroulement.",

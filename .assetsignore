@@ -7,8 +7,3 @@ README.md
 CLAUDE.md
 package.json
 scripts/
-# LEGAL PAGES ON HOLD: not published until the domiciliation address, professional phone
-# and RCS question are settled (see CLAUDE.md). To release: delete these two lines and
-# uncomment the legal links in index.html (footer + contact form note).
-legal.html
-privacy.html
