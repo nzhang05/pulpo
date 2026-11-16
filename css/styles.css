@@ -163,7 +163,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   --cell-w: min(420px, 34vw);           /* tentacle column; js/main.js widens it to fill the free space */
   overflow: hidden;
   display: grid; align-items: center;
-  min-height: max(520px, calc(100svh - 48px));   /* each service fills the screen (minus the stacked strips) */
+  min-height: max(480px, 72svh);   /* a bit shorter than the screen (owner); grows if the text needs more */
   font-family: var(--font-display);
 }
 .service.art-left  { grid-template-columns: var(--cell-w) minmax(0, 1fr); }
