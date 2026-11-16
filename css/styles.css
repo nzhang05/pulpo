@@ -163,7 +163,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
   --cell-w: min(420px, 34vw);           /* tentacle column; js/main.js widens it to fill the free space */
   overflow: hidden;
   display: grid; align-items: center;
-  min-height: 520px;
+  min-height: max(520px, calc(100svh - 48px));   /* each service fills the screen (minus the stacked strips) */
   font-family: var(--font-display);
 }
 .service.art-left  { grid-template-columns: var(--cell-w) minmax(0, 1fr); }
@@ -198,7 +198,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 .service--cream { --pos: 50% 100%; --origin: 25% 100%; --sway: 8.5s; --amp: 1.4deg; --delay: -2s; }
 .service--navy  { --pos: 0% 100%;  --origin: 8% 100%;  --sway: 9s;   --delay: -4s; }
 
-.service-text { padding: 56px var(--gutter); max-width: 760px; container-type: inline-size; }
+.service-text { padding: 56px var(--gutter); width: 100%; max-width: 760px; justify-self: center; container-type: inline-size; } /* centred in the space left by the tentacle */
 .service h3 {
   font-weight: 400; text-transform: uppercase;
   /* 104px as on the original Wix site, shrunk only when the longest word wouldn't
